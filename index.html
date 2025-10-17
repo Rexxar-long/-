@@ -4,26 +4,49 @@
   <meta charset="UTF-8">
   <title>梅乔苏每日福利</title>
   <style>
-    body { font-family: sans-serif; padding: 20px; text-align: center; }
-    .tip { color: #666; margin-top: 20px; }
-    a { color: #e63946; text-decoration: none; font-weight: bold; }
+    body { 
+      font-family: sans-serif; 
+      padding: 20px; 
+      text-align: center; 
+      background-color: #f9f9f9; /* 浅色背景更护眼 */
+    }
+    h2, p, a {
+      font-size: 24px !important; /* 全局超大字号 */
+      line-height: 1.8; /* 行高加宽，阅读更轻松 */
+    }
+    .tip {
+      color: #e63946; /* 红色强调 */
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    a {
+      color: #07c160; /* 绿色按钮感，呼应小程序风格 */
+      text-decoration: none;
+      display: block;
+      margin: 30px auto;
+      padding: 15px;
+      background: #fff;
+      border: 2px solid #07c160;
+      border-radius: 8px;
+      width: 80%;
+    }
   </style>
 </head>
 <body>
-  <h2>正在为您跳转今日福利...</h2>
-  <p class="tip">如果没反应，可直接点击下方链接领取</p>
+  <h2>今日福利领取步骤</h2>
+  <p>点击下方按钮后，会跳转到小程序领取页</p>
+  <p class="tip">请务必点击 <span style="color: #07c160; font-size: 28px;">绿色的“打开小程序”按钮</span> 才能进入领券哦~</p>
   <p id="todayLink"></p>
 
   <script>
     try {
-      // 获取当前星期几（0=周日，1=周一...6=周六）
       const today = new Date().getDay();
-      // 每日福利链接（已核对格式）
-      const links = [
-        "#小程序://梅乔苏/a2iOQoc1xAGsMXb", // 周日
-        "#小程序://梅乔苏/CFuzE1fSLCcczzJ", // 周一
-        "#小程序://梅乔苏/ClaXbvWwVLSoQgD", // 周二
-        "#小程序://梅乔苏/jEL25nRzmvUUrBG", // 周三
+      // 替换成你生成的每日短链
+      const shortLinks = [
+        "https://c1n.cn/周日短链", // 周日
+        "https://c1n.cn/周一短链", // 周一
+        "https://c1n.cn/周二短链", // 周二
+        "https://c1n.cn/周三短链", // 周三
         "https://c.c1nd.cn/cTlwP", // 周四
         "https://c.c1nd.cn/SePge", // 周五
         "https://c.c1nd.cn/RujVv"  // 周六
@@ -31,16 +54,9 @@
       const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
       const todayText = weekdays[today];
       
-      // 显示当天链接（备用）
       document.getElementById("todayLink").innerHTML = 
-        `<a href="${links[today]}">💡 ${todayText}福利：点击领取</a>`;
-      
-      // 自动跳转
-      setTimeout(() => {
-        window.location.href = links[today];
-      }, 1000); // 1秒后跳转，给用户看到备用链接的时间
+        `<a href="${shortLinks[today]}">💡 ${todayText}福利：点击立即领取</a>`;
     } catch (error) {
-      // 如果代码出错，显示错误提示
       document.body.innerHTML = `<h3>加载失败</h3><p>请联系店家获取今日福利～</p>`;
     }
   </script>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    const today = new Date().getDay();
+    const links = [
+      "https://example.com/券链接周日",
+      "https://example.com/券链接周一",
+      "https://example.com/券链接周二",
+      "https://example.com/券链接周三",
+      "https://example.com/券链接周四",
+      "https://example.com/券链接周五",
+      "https://example.com/券链接周六"
+    ];
+    window.location.href = links[today];
+  </script>
+</body>
+</html>

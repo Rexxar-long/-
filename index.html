@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="UTF-8">
+  <title>梅乔苏每日福利</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+    .tip { color: #666; margin-top: 20px; }
+    a { color: #e63946; text-decoration: none; font-weight: bold; }
+  </style>
+</head>
 <body>
+  <h2>正在为您跳转今日福利...</h2>
+  <p class="tip">如果没反应，可直接点击下方链接领取</p>
+  <p id="todayLink"></p>
+
   <script>
-    // 获取当前星期几（0=周日，1=周一...6=周六）
-    const today = new Date().getDay();
-    // 每日福利小程序链接（已修正格式，直接使用#小程序开头）
-    const links = [
-      "#小程序://梅乔苏/a2iOQoc1xAGsMXb", // 周日：第2份生荠菜小馄饨半价
-      "#小程序://梅乔苏/CFuzE1fSLCcczzJ", // 周一：荠菜大馄饨8.5折
-      "#小程序://梅乔苏/ClaXbvWwVLSoQgD", // 周二：酸梅汤5折
-      "#小程序://梅乔苏/jEL25nRzmvUUrBG", // 周三：招牌馄饨堂食双份8.5折
-      "#小程序://梅乔苏/XPJ7pSnHYuL6kGu", // 周四：荠菜小馄饨免费吃（满30元可用）
-      "#小程序://梅乔苏/FrldAT1LHHneVNA", // 周五：招牌双份生馄饨8.5折
-      "#小程序://梅乔苏/qdpjiA0G4yeO7yi"  // 周六：第2份生荠菜小馄饨半价
-    ];
-    // 自动跳转到当日福利链接
-    window.location.href = links[today];
+    try {
+      // 获取当前星期几（0=周日，1=周一...6=周六）
+      const today = new Date().getDay();
+      // 每日福利链接（已核对格式）
+      const links = [
+        "#小程序://梅乔苏/a2iOQoc1xAGsMXb", // 周日
+        "#小程序://梅乔苏/CFuzE1fSLCcczzJ", // 周一
+        "#小程序://梅乔苏/ClaXbvWwVLSoQgD", // 周二
+        "#小程序://梅乔苏/jEL25nRzmvUUrBG", // 周三
+        "#小程序://梅乔苏/XPJ7pSnHYuL6kGu", // 周四
+        "#小程序://梅乔苏/FrldAT1LHHneVNA", // 周五
+        "#小程序://梅乔苏/qdpjiA0G4yeO7yi"  // 周六
+      ];
+      const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+      const todayText = weekdays[today];
+      
+      // 显示当天链接（备用）
+      document.getElementById("todayLink").innerHTML = 
+        `<a href="${links[today]}">💡 ${todayText}福利：点击领取</a>`;
+      
+      // 自动跳转
+      setTimeout(() => {
+        window.location.href = links[today];
+      }, 1000); // 1秒后跳转，给用户看到备用链接的时间
+    } catch (error) {
+      // 如果代码出错，显示错误提示
+      document.body.innerHTML = `<h3>加载失败</h3><p>请联系店家获取今日福利～</p>`;
+    }
   </script>
 </body>
 </html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <script>
+    // 获取当前星期几（0=周日，1=周一...6=周六）
+    const today = new Date().getDay();
+    // 每日福利链接（已按星期对应替换）
+    const links = [
+      "https://#小程序://梅乔苏/a2iOQoc1xAGsMXb", // 周日：第2份生荠菜小馄饨半价
+      "https://#小程序://梅乔苏/CFuzE1fSLCcczzJ", // 周一：荠菜大馄饨8.5折
+      "https://#小程序://梅乔苏/ClaXbvWwVLSoQgD", // 周二：酸梅汤5折
+      "https://#小程序://梅乔苏/jEL25nRzmvUUrBG", // 周三：招牌馄饨堂食双份8.5折
+      "https://#小程序://梅乔苏/XPJ7pSnHYuL6kGu", // 周四：荠菜小馄饨免费吃（满30元可用）
+      "https://#小程序://梅乔苏/FrldAT1LHHneVNA", // 周五：招牌双份生馄饨8.5折
+      "https://#小程序://梅乔苏/qdpjiA0G4yeO7yi"  // 周六：第2份生荠菜小馄饨半价
+    ];
+    // 自动跳转至当日福利
+    window.location.href = links[today];
+  </script>
+</body>
+</html>

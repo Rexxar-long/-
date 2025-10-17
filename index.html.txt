@@ -9,7 +9,7 @@
       "https://example.com/券链接周二",
       "https://example.com/券链接周三",
       "https://example.com/券链接周四",
-      "https://example.com/券链接周五",
+      "#小程序://梅乔苏/FrldAT1LHHneVNA",
       "https://example.com/券链接周六"
     ];
     window.location.href = links[today];

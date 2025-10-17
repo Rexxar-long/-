@@ -6,27 +6,48 @@
   <style>
     body { 
       font-family: sans-serif; 
-      padding: 20px; 
+      padding: 40px 20px; 
       text-align: center; 
-      background-color: #fff; 
+      background-color: #f9f9f9; 
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
     }
-    /* 超大字号+加粗，中老年人一眼看清 */
-    h2, p {
+    /* 超大字号+加粗，中老年人轻松阅读 */
+    h2, p, a {
       font-size: 32px !important; 
       font-weight: bold;
       line-height: 2;
+      margin: 15px 0;
     }
     /* 核心提示用红色强调 */
     .warning {
       color: #e63946;
-      margin: 30px 0;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    /* 手动按钮区域加大+绿色突出 */
+    a {
+      color: #fff;
+      background-color: #07c160;
+      text-decoration: none;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      margin: 30px auto;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <h2>即将跳转领券</h2>
+  <h2>今日福利领取中</h2>
+  <p>正在为您自动跳转领券页...</p>
   <p class="warning">跳转后请点击 <span style="color: #07c160; font-size: 36px;">绿色的“打开小程序”按钮</span> 领券哦~</p>
+  <p id="todayLink">若未自动跳转，点击下方按钮领取</p>
 
   <script>
     try {
@@ -41,7 +62,14 @@
         "https://c.c1nd.cn/SePge", // 周五
         "https://c.c1nd.cn/RujVv"  // 周六
       ];
-      // 自动跳转（1.5秒后触发，给用户看提示的时间）
+      const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
+      const todayText = weekdays[today];
+      
+      // 显示手动领取链接
+      document.getElementById("todayLink").innerHTML = 
+        `<a href="${shortLinks[today]}">💡 ${todayText}福利：手动点击领取</a>`;
+      
+      // 自动跳转（1.5秒后触发）
       setTimeout(() => {
         window.location.href = shortLinks[today];
       }, 1500);

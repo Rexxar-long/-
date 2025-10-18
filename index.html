@@ -44,20 +44,20 @@
   </style>
 </head>
 <body>
-  <h2>今日福利领取中</h2>
-  <p>正在为您自动跳转领券页...</p>
-  <p class="warning">跳转后请点击 <span style="color: #07c160; font-size: 36px;">绿色的“打开小程序”按钮</span> 领券哦~</p>
-  <p id="todayLink">若未自动跳转，点击下方按钮领取</p>
+  <h2>今日福利领取</h2>
+  <p>请点击下方按钮领取今日福利</p>
+  <p class="warning">点击后请务必点击 <span style="color: #07c160; font-size: 36px;">绿色的“打开小程序”按钮</span> 领券哦~</p>
+  <p id="todayLink"></p>
 
   <script>
     try {
       const today = new Date().getDay();
-      // 替换成你生成的每日短链
+      // 已保留您提供的短链
       const shortLinks = [
-        "https://c1n.cn/周日短链", // 周日
-        "https://c1n.cn/周一短链", // 周一
-        "https://c1n.cn/周二短链", // 周二
-        "https://c1n.cn/周三短链", // 周三
+        "https://c.c1nd.cn/JRc9u", // 周日
+        "https://c.c1nd.cn/ryEqd", // 周一
+        "https://c.c1nd.cn/CWVUV", // 周二
+        "https://c.c1nd.cn/cxV4C", // 周三
         "https://c.c1nd.cn/cTlwP", // 周四
         "https://c.c1nd.cn/SePge", // 周五
         "https://c.c1nd.cn/RujVv"  // 周六
@@ -65,14 +65,9 @@
       const weekdays = ["周日", "周一", "周二", "周三", "周四", "周五", "周六"];
       const todayText = weekdays[today];
       
-      // 显示手动领取链接
+      // 显示手动领取链接（唯一跳转入口）
       document.getElementById("todayLink").innerHTML = 
-        `<a href="${shortLinks[today]}">💡 ${todayText}福利：手动点击领取</a>`;
-      
-      // 自动跳转（1.5秒后触发）
-      setTimeout(() => {
-        window.location.href = shortLinks[today];
-      }, 1500);
+        `<a href="${shortLinks[today]}">💡 ${todayText}福利：点击立即领取</a>`;
     } catch (error) {
       document.body.innerHTML = `<h3>加载失败</h3><p>请联系店家获取今日福利～</p>`;
     }
